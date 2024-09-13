@@ -36,7 +36,7 @@ class MyPlugin(BasePlugin):
         if msg == "影子":  # 如果消息为hello
 
             # 回复消息 "hello, everyone!"
-            ctx.add_return("reply", ["龙游贵妇在线扣脚"])
+            ctx.add_return("reply", ["龙游贵妇在线扣脚! "])
 
             # 阻止该事件默认行为（向接口获取回复）
             ctx.prevent_default()
