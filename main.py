@@ -33,7 +33,7 @@ class MyPlugin(BasePlugin):
     @handler(GroupNormalMessageReceived)
     async def group_normal_message_received(self, ctx: EventContext):
         msg = ctx.event.text_message  # 这里的 event 即为 GroupNormalMessageReceived 的对象
-        if msg == "影子":  # 如果消息为hello
+        if "影子" in msg:  # 如果消息为hello
 
             # 回复消息 "hello, everyone!"
             ctx.add_return("reply", ["龙游贵妇在线扣脚! "])
