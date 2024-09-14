@@ -40,15 +40,15 @@ class MyPlugin(BasePlugin):
             ctx.prevent_default()
             
 
-    @on(NormalMessageResponded)
+    @handler(NormalMessageResponded)
     def optimize_message(self, event: EventContext, **kwargs):
         if str(event.event.sender_id) == "1135586980":
             self.ap.logger.info("收到影子的消息")
 
-        original_message = kwargs['response_text']
-        optimized_message = "回我儿子：" + original_message
-        if optimized_message:
-            event.add_return('reply', optimized_message)
+            original_message = kwargs['response_text']
+            optimized_message = "回我儿子：" + original_message
+            if optimized_message:
+                event.add_return('reply', optimized_message)
             
 
     # 插件卸载时触发
