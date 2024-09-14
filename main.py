@@ -49,8 +49,9 @@ class MyPlugin(BasePlugin):
             optimized_message = "回我儿子：" + original_message
             if optimized_message:
                 event.add_return('reply', optimized_message)
-                
-        self.ap.logger.info(kwargs)
+        
+        self.ap.logger.info(event.__dict__)        
+        self.ap.logger.info(event.event.__dict__)
             
 
     # 插件卸载时触发
