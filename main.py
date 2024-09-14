@@ -35,17 +35,20 @@ class MyPlugin(BasePlugin):
         msg = ctx.event.text_message  # 这里的 event 即为 GroupNormalMessageReceived 的对象
         if "影子" in msg:  # 如果消息为hello
 
-            # 回复消息 "hello, everyone!"
             ctx.add_return("reply", ["龙游贵妇在线扣脚! "])
 
-            # 阻止该事件默认行为（向接口获取回复）
             ctx.prevent_default()
             
-        if str(ctx.event.sender_id) == "1135586980":
-            self.ap.logger.info("hello, {}".format(ctx.event.sender_id))
 
-            # 回复消息 "hello, everyone!"
-            ctx.add_return("reply", ["回我儿子："])
+    @on(NormalMessageResponded)
+    def optimize_message(self, event: EventContext, **kwargs):
+        if str(event.event.sender_id) == "1135586980":
+            self.ap.logger.info("收到影子的消息")
+
+        original_message = kwargs['response_text']
+        optimized_message = "回我儿子：" + original_message
+        if optimized_message:
+            event.add_return('reply', optimized_message)
             
 
     # 插件卸载时触发
