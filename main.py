@@ -41,7 +41,7 @@ class MyPlugin(BasePlugin):
             
 
     @handler(NormalMessageResponded)
-    def optimize_message(self, event: EventContext, **kwargs):
+    async def optimize_message(self, event: EventContext, **kwargs):
         if str(event.event.sender_id) == "1135586980":
             self.ap.logger.info("收到影子的消息")
 
