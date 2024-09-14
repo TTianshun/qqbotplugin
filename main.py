@@ -33,6 +33,11 @@ class MyPlugin(BasePlugin):
     @handler(GroupNormalMessageReceived)
     async def group_normal_message_received(self, ctx: EventContext):
         msg = ctx.event.text_message  # 这里的 event 即为 GroupNormalMessageReceived 的对象
+        
+        if str(event.event.sender_id) == "742719097":
+            ctx.add_return("reply", ["拒绝回答傻逼的问题! "])
+            ctx.prevent_default()
+        
         if "影子" in msg:  # 如果消息为hello
 
             ctx.add_return("reply", ["龙游贵妇在线扣脚! "])
