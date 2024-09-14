@@ -45,14 +45,11 @@ class MyPlugin(BasePlugin):
         if str(event.event.sender_id) == "1135586980":
             self.ap.logger.info("收到影子的消息")
 
-        original_message = event.event.response_text
-        optimized_message = "回我儿子：" + original_message
-        if optimized_message:
-            event.add_return('reply', optimized_message)
-        
-        self.ap.logger.info(event.__dict__)        
-        self.ap.logger.info(event.event.__dict__)
-            
+            original_message = event.event.response_text
+            optimized_message = "回我儿子：" + original_message
+            if optimized_message:
+                event.add_return('reply', optimized_message)
+
 
     # 插件卸载时触发
     def __del__(self):
